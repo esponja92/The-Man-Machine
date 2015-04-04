@@ -11,7 +11,12 @@ from Cena import *
 class PrimeiroAno(object):
 
 	def __init__(self):
-		
+
+		self.inicializaCenas()
+		self.inicializaTextos()
+		self.inicializaFilhos()
+
+	def inicializaCenas(self):
 		self.intro = ""
 		self.cena1 = Cena("",None)
 		self.cena1a = Cena("", self.cena1)
@@ -32,8 +37,7 @@ class PrimeiroAno(object):
 		self.cena1abbb = Cena("", self.cena1abb)
 		self.cena1baba = Cena("", self.cena1bab)
 		self.cena1babb = Cena("", self.cena1bab)	
-		self.inicializaTextos()
-		self.inicializaFilhos()
+
 
 	def inicializaTextos(self):
 
@@ -44,11 +48,11 @@ class PrimeiroAno(object):
 		self.cena1aa.setTexto("	Totalmente sem jeito, você se aproxima, e sem nada melhor para dizer, você simplesmente espera estar perto o suficiente para dizer um 'Oi!' com a voz desafinada pelo nervoso. A menina olha para você um pouco surpresa, e te responde com um 'Oi!' meio sem graça. Pela primeira vez na vida seu cérebro trabalhou rápido e você disse 'Sabe, é que eu sou novo na escola, e ainda não conheço ninguém por aqui!'. 'Ahh, entendi! É, minha mãe disse que esse ano iam entrar alunos novos' disse a menina, parecendo mais a vontade. 'Sua mãe é daqui?' você perguntou. 'Sim, é professora da escola!'. 'Ah, legal! Eu sou Isaque!' você disse. 'Patrícia!' respondeu a menina, 'Mas todo mundo me chama de...'\n	'E aí, Pati!' disse um rapaz alto que de repente tinha aparecido e vinha na direção de vocês. A menina abriu um largo sorriso quando viu o rapaz chegando. 'Oi Eryck! To aqui fazendo amizade com o aluno novo! Isaque, esse é o Eryck!' disse Patrícia. 'E aí, cara!' falou Eryck, e com um gesto rápido vocês apertaram as mãos.\n	'Gente, tá na hora da aula!' disse Patrícia. 'Infelizmente!' disse Eryck com um suspiro. 'Isaque, você vem com a gente?' disse a menina, com aquele sorriso simpático que você já conhecia. O que você responde?\n\n	a) Sim, vamos!\n	b) Daqui a pouco, vou só comprar um salgado aqui e já vou!\n")
 		self.cena1ab.setTexto("	Depois que percebeu que a visão daquela menina o tinha desconcentrado totalmente da leitura, você arriscou uma nova olhada, mas a menina não estava mais lá. E no mesmo instante em que você terminava de pronunciar um sonoro 'Ué?' sem perceber que estava pensando alto, uma voz vindo detrás de você te assustou. 'Oi! Você é aluno novo?' A menina estava bem ali, e falando com você! O que você responde?\n\n	a) 'Sou! E você, é nova por aqui também?'\n	b) 'Quem, eu?'\n")
 		self.cena1ba.setTexto("	'Qual é, tá querendo arrumar problema comigo, rapá?' disse o cara, indo na sua direção. 'O que que houve, Eryck?' perguntou uma voz, que naquele momento tenso soou muito familiar. Subitamente, a mesma menina que você admirava instantes antes estava ali, tentando separar a discussão. 'Esse moleque tá tirando onda comigo!' disse o rapaz que agora você sabia se chamar Eryck. 'Deixa isso pra lá, Eryck, ele é novo aqui!' disse a menina. 'Tu teve sorte dessa vez, hein!' foi o que Eryck disse, antes de sair andando e esbravejando sozinho.\n	'Relaxa, ele é assim com todo mundo!' disse a menina pra você, parecendo mais calma agora. O que você responde?\n\n	a) 'Ele deve ter me estranhado porque eu sou novo aqui. Você é aluna nova também?'\n	b) 'Você já conhecia ele antes?'\n")
-		self.cena1bb.setTexto("	'Hahaha, qual é, tá com medo de apanhar é? Eu hein, moleque!' disse o cara, saindo e rindo sozinho. Qual não foi a sua surpresa quando, refazendo-se do susto, viu que aquela menina tão bonita estava vindo na sua direção! 'Relaxa, ele é assim com todo mundo, não precisa ficar nervoso.' Disse, enquanto se aproximava. 'Qual é o seu nome?' ela perguntou. O que você responde?\n\n	a) 'Isaque, e o seu?'\n	b) 'Isaque!'")
+		self.cena1bb.setTexto("	'Hahaha, qual é, tá com medo de apanhar é? Eu hein, moleque!' disse o cara, saindo e rindo sozinho. Qual não foi a sua surpresa quando, refazendo-se do susto, viu que aquela menina tão bonita estava vindo na sua direção! 'Relaxa, ele é assim com todo mundo, não precisa ficar nervoso.' Disse, enquanto se aproximava. 'Qual é o seu nome?' ela perguntou. O que você responde?\n\n	a) 'Isaque, e o seu?'\n	b) 'Isaque!'\n")
 		self.cena1aaa.setTexto("	Vocês três foram andando em direção a sala e enquanto Eryck e Patrícia falavam de alguma coisa qualquer, cheios de risinhos e implicações. A experiência parecia ter dado muito certo. Eram os mesmos Eryck e Patrícia de antes. Talvez você estivesse mesmo no caminho certo para encontrar as respostas das perguntas que nunca foram feitas. E no caminho, mais gente se juntou a vocês, pessoas que você também se lembrava, pois conviveram juntos nos três anos de ensino médio. Patrícia ia apresentando você a cada um deles, enquanto Eryck pareceu bem indiferente. E assim você foi conhecendo novamente os seus companheiros de classe, e aos poucos a sua ficha foi caindo de que finalmente você havia reencontrado a menina de quem você jamais devia ter se separado.\n")
 		self.cena1aab.setTexto("	Vocês três foram andando em direção a sala e enquanto Eryck e Patrícia falavam de alguma coisa qualquer, cheios de risinhos e implicações. A experiência parecia ter dado muito certo. Eram os mesmos Eryck e Patrícia de antes. Talvez você estivesse mesmo no caminho certo para encontrar as respostas das perguntas que nunca foram feitas. E no caminho, mais gente se juntou a vocês, pessoas que você também se lembrava, pois conviveram juntos nos três anos de ensino médio. Patrícia ia apresentando você a cada um deles, enquanto Eryck pareceu bem indiferente. E assim você foi conhecendo novamente os seus companheiros de classe, e aos poucos a sua ficha foi caindo de que finalmente você havia reencontrado a menina de quem você jamais devia ter se separado.\n")
 		self.cena1aba.setTexto("	'Não, hahaha! To nesse colégio desde o maternal! Mas daqui a três anos acaba, finalmente! Melhor a gente ir pra sala agora! Eu sou Patrícia, e você?' 'Isaque...' você respondeu, meio chateado por ela não se lembrar de você, mesmo sabendo que isso era impossível, já que essa foi precisamente a época em que vocês se conheceram. 'Prazer, Isaque! Vem, eu te apresento a galera que anda comigo!' disse ela, te apresentando a todos os amigos que você já tinha conhecido antes, só que não dessa forma. E enquanto subiam, foi caindo a sua ficha de que depois de todos esses anos, ali estava Patrícia, novamente.\n")
-		self.cena1abb.setTexto("	'Sim, você!'. A menina deu um sorriso. 'Minha mãe é professora daqui, ela me disse que ia entrar muita gente nova esse ano. Qual é o seu nome?'\n\n	a) 'Isaque, e o seu'?\n	b) 'Isaque!'")
+		self.cena1abb.setTexto("	'Sim, você!'. A menina deu um sorriso. 'Minha mãe é professora daqui, ela me disse que ia entrar muita gente nova esse ano. Qual é o seu nome?'\n\n	a) 'Isaque, e o seu'?\n	b) 'Isaque!'\n")
 		self.cena1baa.setTexto("	'Não, hahaha! To nesse colégio desde o maternal! Mas daqui a três anos acaba, finalmente! Melhor a gente ir pra sala agora! Eu sou Patrícia, e você?' 'Isaque...' você respondeu, meio chateado por ela não se lembrar de você, mesmo sabendo que isso era impossível, já que essa foi precisamente a época em que vocês se conheceram. 'Prazer, Isaque! Vem, eu te apresento a galera que anda comigo!' disse ela, te apresentando a todos os amigos que você já tinha conhecido antes, só que não dessa forma. E enquanto subiam, foi caindo a sua ficha de que depois de todos esses anos, ali estava Patrícia, novamente.\n")
 		self.cena1bab.setTexto("	'Já! Na verdade ele é um cara muito legal quando está entre amigos.' disse ela, fazendo uma leve pausa. 'Bom, eu vou subir que já tá na hora!' Ela disse. O que você responde?\n\n	a) Ah, eu vou também!\n	b) Tá... a gente se vê!\n")
 		self.cena1bba.setTexto("	'Patrícia, mas todo mundo me chama de Pati!'. Um grupinho de meninas começou a chamá-la do outro lado do pátio, no mesmo lugar onde você a tinha visto antes. 'Já vou!' disse Patrícia para as meninas. 'Depois a gente se fala, Isaque!'. E dizendo isso, ia andando em direção às amigas, naquele ritmo rápido tão próprio das meninas na adolescência. Finalmente, depois de todos esses anos, lá estava ela novamente. Patrícia, a menina que com um sorriso foi capaz de conquistar um coração.\n")
@@ -81,30 +85,11 @@ class PrimeiroAno(object):
 		self.cena1bb.setCenaFilhaA(self.cena1bba)
 		self.cena1bb.setCenaFilhaB(self.cena1bbb)
 
-		self.cena1aaa.setCenaFilhaA(None)
-		self.cena1aaa.setCenaFilhaB(None)
-
-		self.cena1aab.setCenaFilhaA(None)
-		self.cena1aab.setCenaFilhaB(None)
-
-		self.cena1aba.setCenaFilhaA(None)
-		self.cena1aba.setCenaFilhaB(None)
-
 		self.cena1abb.setCenaFilhaA(self.cena1abba)
 		self.cena1abb.setCenaFilhaB(self.cena1abbb)
 
-		self.cena1baa.setCenaFilhaA(None)
-		self.cena1baa.setCenaFilhaB(None)
-
 		self.cena1bab.setCenaFilhaA(self.cena1baba)
 		self.cena1bab.setCenaFilhaB(self.cena1babb)
-
-		self.cena1bba.setCenaFilhaB(None)
-		self.cena1bba.setCenaFilhaB(None)
-
-		self.cena1bbb.setCenaFilhaB(None)
-		self.cena1bbb.setCenaFilhaB(None)
-		
 
 	def getIntro(self):
 		return self.intro
