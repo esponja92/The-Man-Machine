@@ -12,6 +12,9 @@ class Cena(object):
 		self.cena_filha_a = None
 		self.cena_filha_b = None
 
+		#identificador da cena (uso facultativo)
+		self.nome = ""
+
 	def setCenaFilhaA(self, cena_filha_a):
 		self.cena_filha_a = cena_filha_a
 
@@ -32,3 +35,9 @@ class Cena(object):
 
 	def setTexto(self, texto):
 		self.texto = texto
+		
+	def setNome(self, nome):
+		self.nome = nome
+
+	def getNome(self):
+		return self.nome

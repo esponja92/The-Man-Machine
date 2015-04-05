@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 
@@ -26,13 +26,19 @@ class Formatura(object):
 		self.cena1bb = Cena("", self.cena1b)
 		self.cena1aaa = Cena("", self.cena1aa)
 		self.cena1aab = Cena("", self.cena1aa)
+		self.cena1aab.setNome("1aab")
 		self.cena1baa = Cena("", self.cena1ba)
+		self.cena1baa.setNome("1baa")
 		self.cena1bab = Cena("", self.cena1ba)
+		self.cena1bab.setNome("1bab")
 		self.cena1bba = Cena("", self.cena1bb)
+		self.cena1bba.setNome("1bba")
 		self.cena1bbb = Cena("", self.cena1bb)
+		self.cena1bbb.setNome("1bbb")
 		self.cena1aaaa = Cena("", self.cena1aaa)
-		self.cena1aaab = Cena("", self.cena1aaa)	
-
+		self.cena1aaaa.setNome("1aaaa")			 
+		self.cena1aaab = Cena("", self.cena1aaa)
+		self.cena1aaab.setNome("1aaab")
 
 	def inicializaTextos(self):
 
@@ -51,7 +57,7 @@ class Formatura(object):
 		self.cena1bbb.setTexto("	'Eu sei, e sou eu quem está te mandando embora!' disse Eryck, e levantando, te deu um empurrão. Normalmente um empurrão como aquele poderia no máximo fazer uma pessoa perder o equilíbrio. Mas naquele exato momento você começava a fraquejar, pois a experiência estava chegando ao fim, e a máquina já havia iniciado o módulo que o traria de volta. Você não só caiu, mas também sentiu o forte impacto da cabeça no chão, o que se seguiu de uma dor lancinante na região das têmporas. 'Isaque!' gritou Patrícia, e correndo veio ficar de joelhos ao seu lado. Você entretanto conseguia ver, ouvir e responder cada vez menos. 'Isaque, não!' 'Você gosta de mim, Isaque?' 'Isaque, você tá se sentindo bem?' 'Onde você está, Isaque!' eram frases que se repetiam na sua mente, entoadas pela voz de Patrícia, que segurando as suas mãos quando tudo escureceu.\n")
 		self.cena1aaaa.setTexto("	'Ah, seu bobo, eu também vou morrer de saudade de você!' ela disse, te dando um abraço forte. Você retribuiu, mas reparou que o abraço demorou um pouco mais de tempo do que o normal... para dois amigos. Foi tudo muito rápido o que se seguiu a partir dali. Eryck tinha chegado naquele exato momento e havia entendido mal aquele abraço. 'Eu cansei de ver você dar em cima da minha namorada, cara! Cansei!' ele disse, te dando um empurrão. 'A gente não namora, Eryck!' Patrícia gritou, e àquela altura todos já estavam olhando para vocês três. 'Já que você tá indo embora do país, deixa eu te dar um presente de despedida!' disse Eryck, dando um soco no seu rosto. Estranhamente, aquele soco parecia ter sido mais forte do que o esperado, e você caiu no chão. A última coisa que você ouviu foi um grito de Patrícia. A última coisa... antes que você não visse mais nada.\n")
 		self.cena1aaab.setTexto("	'...de mim?' ela perguntou, e sem querer esbarrou no copo que tinha apoiado em cima da mesa. No mesmo instante ela tentou pegar o copo caído, mas a sua mão encontrou a mão dela antes. Durante aquele simples um segundo, infinitas coisas passaram pela sua cabeça. Anos de trabalho naquele projeto que você manteve em segredo. Viajar no tempo talvez fosse impossível, mas uma viagem pelas suas lembranças parecia algo bem razoável. Os orientais haviam desenvolvido técnicas de sonhos conscientes, por que não inventar uma máquina que permitisse que você sonhasse com as suas lembranças?\n	Patrícia estava especialmente linda naquela noite. Seu vestido longo que parecia ter sido moldado para ela, sua maquiagem que fazia seus olhos brilharem ainda mais. Sem nada dizerem, você se inclinou vagarosamente na direção dela, pois sentia ser a coisa a ser feita, ao que você foi correspondido. Mas tão logo vocês se beijaram, uma dor terrivelmente aguda na sua cabeça fez você franzir o cenho, e sem poder reagir, seu corpo enfraqueceu e você caiu.\n	Tudo o que você podia ver eram vultos. As pessoas olhando para você de cima, o rosto apavorado de Patrícia, a visão cada vez mais turva, e a total impossibilidade de reação. 'Isaque, você tá se sentindo bem?' 'Isaque, acorda!' 'Você gosta de mim, Isaque?' você ouvia Patrícia repetindo. Aparentemente, o tempo havia se esgotado.\n")
-		
+
 	def inicializaFilhos(self):
 
 		self.cena1.setCenaFilhaA(self.cena1a)
@@ -120,3 +126,12 @@ class Formatura(object):
 
 	def getCena1aaab(self):
 		return self.cena1aaab
+	
+	def getFinal1(self):
+		return self.final1
+
+	def getFinal2(self):
+		return self.final2
+
+	def getFinal3(self):
+		return self.final3

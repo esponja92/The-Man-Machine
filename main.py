@@ -1,6 +1,23 @@
 from Model import *
 from View import *
 
+primeiro_ano = PrimeiroAno.PrimeiroAno()
+segundo_ano = SegundoAno.SegundoAno()
+formatura = Formatura.Formatura()
+final = Final.Final()
+
+#pontos conscienciais
+pontos = 12
+
+#booleanos para controle das fases
+FIM_DO_JOGO = False
+FIM_DA_FASE_1 = False
+FIM_DA_FASE_2 = False
+FIM_DA_FASE_3 = False
+
+#hashmap para identificacao dos finais
+finais = {"1aaaa":"final2", "1aaab":"final2", "1aab":"final1", "1baa":"final2", "1bab":"final1", "1bba":"final1", "1bbb":"final2"}
+
 def cenaDecisao(cena_atual, pontos):
 	OutIn.output(cena_atual.getTexto())
 	OutIn.output("	c) Voltar a cena anterior\n")
@@ -18,17 +35,20 @@ def cenaDecisao(cena_atual, pontos):
 		OutIn.opcaoInvalida()
 	return cena_atual, pontos
 
-primeiro_ano = PrimeiroAno.PrimeiroAno()
-segundo_ano = SegundoAno.SegundoAno()
-formatura = Formatura.Formatura()
-final = Final.Final()
 
-#pontos conscienciais
-pontos = 12
-FIM_DO_JOGO = False
-FIM_DA_FASE_1 = False
-FIM_DA_FASE_2 = False
-FIM_DA_FASE_3 = False
+def iniciaCena(fase):
+	OutIn.output(fase.getIntro())
+	OutIn.delay()
+	return fase.getCena1()
+
+def decideFinal(cena_atual):
+	nome_final = finais[cena_atual.getNome()]
+	if(nome_final == "final1"):
+		OutIn.output(final.getFinal1())
+	else:
+		OutIn.output(final.getFinal2())
+	OutIn.delay()
+	
 
 #Chama tela de abertura do View, que deve retornar com a opcao do jogador
 opcao = TelaDeAbertura.abertura()
@@ -40,17 +60,11 @@ if (opcao == 'b'):
 #loop principal
 while(not(FIM_DO_JOGO)):
 	if(not(FIM_DA_FASE_1)):
-		cena_atual = primeiro_ano.getCena1()
-		OutIn.output(primeiro_ano.getIntro())
-		OutIn.delay()
+		cena_atual = iniciaCena(primeiro_ano)
 	elif(not(FIM_DA_FASE_2)):
-		cena_atual = segundo_ano.getCena1()
-		OutIn.output(segundo_ano.getIntro())
-		OutIn.delay()
+		cena_atual = iniciaCena(segundo_ano)
 	elif(not(FIM_DA_FASE_3)):
-		cena_atual = formatura.getCena1()
-		OutIn.output(formatura.getIntro())
-		OutIn.delay()
+		cena_atual = iniciaCena(formatura)
 	#Se o codigo entrar aqui, significa que o jogo acabou
 	else:
 		cena_atual = Cena.Cena("", None)
@@ -60,9 +74,9 @@ while(not(FIM_DO_JOGO)):
 		cena_atual,pontos = cenaDecisao(cena_atual, pontos)
 
 	#testa se o personagem morreu
-	if(pontos == 0):																		
-		OutIn.output(final.getFinal3())
-		OutIn.delay()
+	if(pontos == 0):
+		OutIn.output(formatura.getFinal3().getTexto())
+		FIM_DO_JOGO = True
 
 	#O ultimo paragrafo da fase
 	else:
@@ -76,8 +90,6 @@ while(not(FIM_DO_JOGO)):
 			FIM_DA_FASE_2 = True
 		elif(not(FIM_DA_FASE_3)):
 			FIM_DA_FASE_3 = True
-
-		#Fim do jogo
-		else:
-			FIM_DO_JOGO = True			
-
+			#Se a fase 3 acabou, o jogo tambem
+			FIM_DO_JOGO = True
+			decideFinal(cena_atual)
