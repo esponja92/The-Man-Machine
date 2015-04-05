@@ -9,4 +9,4 @@ def delay():
 	raw_input("\n\nPressione Enter para continuar...\n\n")
 
 def opcaoInvalida():
-	print "\n\nEscolha uma dentre as opcoes disponiveis\n\n"
+	print "\n\nOpcao indisponivel no momento\n\n"

@@ -10,9 +10,11 @@ def clearScreen():
 
 def abertura():
 	clearScreen()
-	print "O jogo comecou! Quer jogar?"
-	print "a) Sim"
-	print "b) Nao"
+	print "============= The Man Machine ============="
+	print "Escrito e programado por Hugo Dantas\n"
+	print "Gostaria de iniciar um novo jogo?"
+	print "	a) Sim"
+	print "	b) Nao"
 	resposta = raw_input("")
 	return resposta
 
