@@ -16,21 +16,18 @@ def processa_texto(linha):
 	#	1) separar os \n e transformar os pedacos em uma lista de string
 	texto = linha.split("\n")
 
-	#	2) tratar cada string para que tenha no maximo 40 caracteres.
+	#	2) tratar cada string para que tenha no maximo n = 40 caracteres.
 	contador = 0
 	tamanho = len(texto)
-	n = 40
 	i = 0
 
 	for i in texto:
+		n = 40
 		if(len(i) > n):
-			
-			if (i[n] == " "):
-				elemento = i[0:n]
-				sobra = i[n+1:len(i)]
-			else:
-				elemento = i[0:n] + "-"
-				sobra = i[n:len(i)]
+			while(i[n] != " "):
+				n = n - 1
+			elemento = i[0:n]
+			sobra = i[n+1:len(i)]
 			texto[contador] = elemento
 			texto.insert(contador + 1, sobra)
 		contador = contador + 1
@@ -39,9 +36,9 @@ def processa_texto(linha):
 
 def escreve_linha(linha, pg, myfont, screen, cor, posi_texto):
 	char = ""
+	velocidade_do_texto = 0.03
 	for j in linha:
-		sleep(0.05)
-		print char.encode("utf-8")
+		sleep(velocidade_do_texto)
 		char = char + j
 		label = myfont.render(char, 1, cor)
 		screen.blit(label, posi_texto)
@@ -64,6 +61,9 @@ def escreve(linha, pg, myfont, screen, cor, nlinhas):
 	p = posi_texto
 
 	texto = processa_texto(linha)
+
+	print "texto da ~funcao escreve~"
+	print texto
 	
 	conta_linhas = 0
 	for i in texto:
