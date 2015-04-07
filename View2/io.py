@@ -15,11 +15,11 @@ def processa_texto(linha):
 	#ESSA FUNCAO PRECISA RECEBER UMA STRING LONGA, CHEIA DE \n E FAZER O SEGUINTE:
 	#	1) separar os \n e transformar os pedacos em uma lista de string (e tirar as malditas strings nulas do final)
 	texto = linha.split("\n")
-	if (texto[-1] == ""):
-		texto.pop()
+	#if (texto[-1] == ""):
+	#	texto.pop()
 
 	#metodo para retirar todas as strings nulas
-	#texto = filter(lambda a: a != "", texto)
+	texto = filter(lambda a: a != "", texto)
 
 	#	2) tratar cada string para que tenha no maximo n = 40 caracteres.
 	contador = 0
@@ -27,7 +27,7 @@ def processa_texto(linha):
 	i = 0
 
 	for i in texto:
-		n = 40
+		n = 48
 		if(len(i) > n):
 			while(i[n] != " "):
 				n = n - 1
@@ -70,9 +70,15 @@ def escreve(linha, pg, myfont, screen, cor, nlinhas):
 	p = posi_texto
 
 	texto = processa_texto(linha)
+	print texto
 	
 	conta_linhas = 0
 	for i in texto:
+		#se for a hora de listar as opcoes, quero obrigar a rotina a gerar uma nova tela
+		if ((len(i))and("	a)" in i)):
+			delay(pg, myfont, screen, cor)
+			conta_linhas = 0
+			p = posi_texto
 		escreve_linha(i, pg, myfont, screen, cor, p)
 		p = (p[0], p[1] + 25)
 		conta_linhas = conta_linhas + 1

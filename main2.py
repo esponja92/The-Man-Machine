@@ -17,18 +17,24 @@ FIM_DA_FASE_1 = False
 FIM_DA_FASE_2 = False
 FIM_DA_FASE_3 = False
 
-nfrases = 6
+nfrases = 7
 
 #hashmap para identificacao dos finais
 finais = {"1aaaa":"final1", "1aaab":"final2", "1aab":"final1", "1baa":"final2", "1bab":"final1", "1bba":"final1", "1bbb":"final2"}
 
+#cor da letra
 yellow = (255, 255, 0)
 
+#dimensao da tela
+dimen = (640, 480)
+
+#tamanho da fonte
+tfonte = 35
 pg.init()
 
-screen = pg.display.set_mode((640, 480))
+screen = pg.display.set_mode(dimen)
 pg.display.set_caption("The Man Machine")
-myfont = pg.font.SysFont("Computer Pixel-7", 40)
+myfont = pg.font.SysFont("Computer Pixel-7", tfonte)
 
 def cenaDecisao(cena_atual, pontos):
 	io.escreve(cena_atual.getTexto(),pg, myfont, screen, yellow, nfrases)
