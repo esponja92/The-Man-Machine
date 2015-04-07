@@ -13,8 +13,13 @@ def esperaTeclaPressionada(pg):
 
 def processa_texto(linha):
 	#ESSA FUNCAO PRECISA RECEBER UMA STRING LONGA, CHEIA DE \n E FAZER O SEGUINTE:
-	#	1) separar os \n e transformar os pedacos em uma lista de string
+	#	1) separar os \n e transformar os pedacos em uma lista de string (e tirar as malditas strings nulas do final)
 	texto = linha.split("\n")
+	if (texto[-1] == ""):
+		texto.pop()
+
+	#metodo para retirar todas as strings nulas
+	#texto = filter(lambda a: a != "", texto)
 
 	#	2) tratar cada string para que tenha no maximo n = 40 caracteres.
 	contador = 0
@@ -53,7 +58,7 @@ def apagaTela(pg, screen):
 	return
 
 def delay(pg, myfont, screen, cor):
-	label = escreve_linha("Pressione qualquer tecla para continuar...", pg, myfont, screen, cor, (10, 400))
+	label = escreve_linha("Pressione qualquer tecla para continuar...", pg, myfont, screen, cor, (10, 440))
 	esperaTeclaPressionada(pg)
 	apagaTela(pg, screen)
 

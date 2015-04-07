@@ -17,7 +17,7 @@ FIM_DA_FASE_1 = False
 FIM_DA_FASE_2 = False
 FIM_DA_FASE_3 = False
 
-nfrases = 7
+nfrases = 6
 
 #hashmap para identificacao dos finais
 finais = {"1aaaa":"final1", "1aaab":"final2", "1aab":"final1", "1baa":"final2", "1bab":"final1", "1bba":"final1", "1bbb":"final2"}
@@ -45,6 +45,7 @@ def cenaDecisao(cena_atual, pontos):
 		pontos = pontos - 1
 	else:
 		io.escreve("Opção indisponível.\n",pg, myfont, screen, yellow, nfrases)
+		io.delay(pg, myfont, screen, yellow)
 	return cena_atual, pontos
 
 
@@ -62,8 +63,8 @@ def decideFinal(cena_atual):
 
 
 #Chama tela de abertura do View, que deve retornar com a opcao do jogador
-#opcao = TelaDeAbertura.abertura(pg)
-opcao = "a"
+opcao = TelaDeAbertura.abertura(pg, myfont, screen)
+opcao = chr(opcao)
 
 while(opcao == 'a'):
 
@@ -105,7 +106,7 @@ while(opcao == 'a'):
 
 		#O ultimo paragrafo da fase
 		else:
-			io.escreve(cena_atual.getTexto(),pg, myfont, screen, coyellow, nfrases)
+			io.escreve(cena_atual.getTexto(),pg, myfont, screen, yellow, nfrases)
 			
 			#Ajusta o booleano indicando o final da fase
 			if(not(FIM_DA_FASE_1)):
@@ -118,4 +119,5 @@ while(opcao == 'a'):
 				FIM_DO_JOGO = True
 				decideFinal(cena_atual)
 	#Chama tela de abertura do View de novo
-	#opcao = TelaDeAbertura.abertura()
+	opcao = TelaDeAbertura.abertura(pg, myfont, screen)
+	opcao = chr(opcao)
