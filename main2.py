@@ -103,6 +103,7 @@ def loopPrincipal():
 		#O ultimo paragrafo da fase
 		else:
 			io.escreve(cena_atual.getTexto(),pg, myfont, screen, yellow, nfrases)
+			io.delay(pg, myfont, screen, yellow)
 			
 			#Ajusta o booleano indicando o final da fase
 			if(not(FIM_DA_FASE_1)):
