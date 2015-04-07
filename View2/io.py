@@ -70,12 +70,11 @@ def escreve(linha, pg, myfont, screen, cor, nlinhas):
 	p = posi_texto
 
 	texto = processa_texto(linha)
-	print texto
 	
 	conta_linhas = 0
 	for i in texto:
-		#se for a hora de listar as opcoes, quero obrigar a rotina a gerar uma nova tela
-		if ((len(i))and("	a)" in i)):
+		#se for a hora de listar as opcoes, e elas nao estiverem em primeiro naturalmente, quero obrigar a rotina a gerar uma nova tela
+		if ((len(i))and("	a)" in i)and(conta_linhas > 0)):
 			delay(pg, myfont, screen, cor)
 			conta_linhas = 0
 			p = posi_texto
