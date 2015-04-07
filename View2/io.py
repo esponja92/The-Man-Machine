@@ -8,8 +8,13 @@ posi_texto = (10, 165)
 def esperaTeclaPressionada(pg):
     while True:
     	for event in pg.event.get():
+    		if event.type == pg.QUIT:
+    			raise SystemExit
     		if event.type == KEYUP:
-    			return event.key
+    			if event.key == pg.K_ESCAPE:
+    				raise SystemExit
+    			else:
+    				return event.key
 
 def processa_texto(linha):
 	#ESSA FUNCAO PRECISA RECEBER UMA STRING LONGA, CHEIA DE \n E FAZER O SEGUINTE:
