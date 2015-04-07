@@ -123,11 +123,14 @@ def loopPrincipal():
 				decideFinal(cena_atual)
 
 #Chama tela de abertura do View, que deve retornar com a opcao do jogador
-opcao = TelaDeAbertura.abertura(pg, myfont, screen)
+opcao = ""
+while(not(opcao in range(256))):
+	opcao = TelaDeAbertura.abertura(pg, myfont, screen)
 opcao = chr(opcao)
 while(opcao != "b"):
 	if (opcao == "a"):
 		loopPrincipal()
 	#Chama tela de abertura do View de novo
-	opcao = TelaDeAbertura.abertura(pg, myfont, screen)
+	while(not(opcao in range(256))):
+		opcao = TelaDeAbertura.abertura(pg, myfont, screen)
 	opcao = chr(opcao)
