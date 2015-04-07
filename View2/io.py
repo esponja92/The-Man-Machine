@@ -36,7 +36,8 @@ def processa_texto(linha):
 
 def escreve_linha(linha, pg, myfont, screen, cor, posi_texto):
 	char = ""
-	velocidade_do_texto = 0.03
+	label = ""
+	velocidade_do_texto = 0.001
 	for j in linha:
 		sleep(velocidade_do_texto)
 		char = char + j
@@ -44,7 +45,7 @@ def escreve_linha(linha, pg, myfont, screen, cor, posi_texto):
 		screen.blit(label, posi_texto)
 
 		pg.display.flip()
-	return
+	return label
 
 def apagaTela(pg, screen):
 	screen.fill((0, 0, 0))
@@ -52,25 +53,25 @@ def apagaTela(pg, screen):
 	return
 
 def delay(pg, myfont, screen, cor):
-	escreve_linha("Pressione qualquer tecla para continuar...", pg, myfont, screen, cor, (10, 400))
+	label = escreve_linha("Pressione qualquer tecla para continuar...", pg, myfont, screen, cor, (10, 400))
 	esperaTeclaPressionada(pg)
 	apagaTela(pg, screen)
 
 def escreve(linha, pg, myfont, screen, cor, nlinhas):
+	apagaTela(pg, screen)
+	#encoding
+	linha = linha.decode("utf-8").encode("latin1")
 	#copia
 	p = posi_texto
 
 	texto = processa_texto(linha)
-
-	print "texto da ~funcao escreve~"
-	print texto
 	
 	conta_linhas = 0
 	for i in texto:
 		escreve_linha(i, pg, myfont, screen, cor, p)
 		p = (p[0], p[1] + 25)
 		conta_linhas = conta_linhas + 1
-		if (conta_linhas == nlinhas):
+		if ((conta_linhas == nlinhas)and(i != texto[-1])):
 			delay(pg, myfont, screen, cor)
 			conta_linhas = 0
 			p = posi_texto
