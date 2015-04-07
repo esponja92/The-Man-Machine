@@ -47,7 +47,7 @@ def processa_texto(linha):
 def escreve_linha(linha, pg, myfont, screen, cor, posi_texto):
 	char = ""
 	label = ""
-	velocidade_do_texto = 0.001
+	velocidade_do_texto = 0.01
 	for j in linha:
 		sleep(velocidade_do_texto)
 		char = char + j
