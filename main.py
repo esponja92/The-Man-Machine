@@ -6,6 +6,8 @@ segundo_ano = SegundoAno.SegundoAno()
 formatura = Formatura.Formatura()
 final = Final.Final()
 
+#Testando o plugin do GIT pro sublime
+
 #booleanos para controle das fases
 FIM_DO_JOGO = False
 FIM_DA_FASE_1 = False
