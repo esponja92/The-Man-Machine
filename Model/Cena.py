@@ -7,6 +7,7 @@ Para facilitar o loop principal do jogo, estou antevendo que cada cena sabe quem
 class Cena(object):
 
 	def __init__(self, texto, cena_mae):
+		self.musica = None
 		self.texto = texto
 		self.cena_mae = cena_mae
 		self.cena_filha_a = None
@@ -14,6 +15,12 @@ class Cena(object):
 
 		#identificador da cena (uso facultativo)
 		self.nome = ""
+
+	def setMusica(self, musica):
+		self.musica = musica
+
+	def getMusica(self):
+		return self.musica
 
 	def setCenaFilhaA(self, cena_filha_a):
 		self.cena_filha_a = cena_filha_a

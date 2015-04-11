@@ -11,12 +11,6 @@ segundo_ano = SegundoAno.SegundoAno()
 formatura = Formatura.Formatura()
 final = Final.Final()
 
-#booleanos para controle das fases
-FIM_DO_JOGO = False
-FIM_DA_FASE_1 = False
-FIM_DA_FASE_2 = False
-FIM_DA_FASE_3 = False
-
 nfrases = 7
 
 #hashmap para identificacao dos finais
@@ -30,13 +24,17 @@ dimen = (640, 480)
 
 #tamanho da fonte
 tfonte = 35
+
 pg.init()
 
 screen = pg.display.set_mode(dimen, FULLSCREEN)
 pg.display.set_caption("The Man Machine")
-myfont = pg.font.SysFont("./ARCADECLASSIC.TTF", tfonte)
+myfont = pg.font.SysFont("Computer Pixel-7", tfonte)
 
-def cenaDecisao(cena_atual, pontos):
+def cenaDecisao(cena_atual, pontos, MUSIC_ON):
+	if((cena_atual.getMusica() != None)and(MUSIC_ON == False)):
+		MUSIC_ON = True
+		io.play_music(pg, cena_atual.getMusica())
 	io.escreve(cena_atual.getTexto(),pg, myfont, screen, yellow, nfrases)
 	resposta = io.esperaTeclaPressionada(pg)
 	if (resposta in range(256)):
@@ -65,8 +63,10 @@ def decideFinal(cena_atual):
 	nome_final = finais[cena_atual.getNome()]
 	if(nome_final == "final1"):
 		io.escreve(final.getFinal1(),pg, myfont, screen, yellow, nfrases)
+		io.play_music(pg, final.getMusicaF1())
 	else:
 		io.escreve(final.getFinal2(),pg, myfont, screen, yellow, nfrases)
+		io.play_music(pg, final.getMusicaF2())
 
 def loopPrincipal():
 
@@ -75,6 +75,8 @@ def loopPrincipal():
 	FIM_DA_FASE_2 = False
 	FIM_DA_FASE_3 = False
 	FIM_DO_JOGO = False
+
+	MUSIC_ON = False
 
 	#pontos conscienciais iniciais
 	pontos = 12
@@ -93,11 +95,13 @@ def loopPrincipal():
 
 		#Condicao para encerrar a fase
 		while(((cena_atual.getCenaFilhaA() != None)or(cena_atual.getCenaFilhaB() != None))and(pontos > 0)):
-			cena_atual,pontos = cenaDecisao(cena_atual, pontos)
+			cena_atual,pontos = cenaDecisao(cena_atual, pontos, MUSIC_ON)
 
 		#testa se o personagem morreu
 		if(pontos == 0):
+			io.stop_music(pg)
 			io.escreve(final.getFinal3(),pg, myfont, screen, yellow, nfrases)
+			io.play_music(pg, final.getMusicaF3())
 			io.delay(pg, myfont, screen, yellow)
 
 			#Todos os booleanos devem indicar o fim do jogo
@@ -114,10 +118,16 @@ def loopPrincipal():
 			#Ajusta o booleano indicando o final da fase
 			if(not(FIM_DA_FASE_1)):
 				FIM_DA_FASE_1 = True
+				io.stop_music(pg)
+				MUSIC_ON = False
 			elif(not(FIM_DA_FASE_2)):
 				FIM_DA_FASE_2 = True
+				io.stop_music(pg)
+				MUSIC_ON = False
 			elif(not(FIM_DA_FASE_3)):
 				FIM_DA_FASE_3 = True
+				io.stop_music(pg)
+				MUSIC_ON = False
 				#Se a fase 3 acabou, o jogo tambem
 				FIM_DO_JOGO = True
 				decideFinal(cena_atual)
@@ -125,6 +135,7 @@ def loopPrincipal():
 #Chama tela de abertura do View, que deve retornar com a opcao do jogador
 opcao = ""
 while(not(opcao in range(256))):
+	io.play_music(pg, "Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3")
 	opcao = TelaDeAbertura.abertura(pg, myfont, screen)
 opcao = chr(opcao)
 while(opcao != "b"):

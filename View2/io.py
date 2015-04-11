@@ -5,6 +5,27 @@ from pygame.locals import *
 
 posi_texto = (10, 165)
 
+def stop_music(pg):
+	pg.mixer.music.stop()
+
+def play_music(pg, music_file):
+    # pick a midi or MP3 music file you have in the working folder
+    # or give full pathname
+    #music_file = "Drumtrack.mp3"
+    freq = 44100    # audio CD quality
+    bitsize = -16   # unsigned 16 bit
+    channels = 2    # 1 is mono, 2 is stereo
+    buffer = 2048   # number of samples (experiment to get right sound)
+    pg.mixer.init(freq, bitsize, channels, buffer)
+    # optional volume 0 to 1.0
+    pg.mixer.music.set_volume(0.8)
+    try:
+        pg.mixer.music.load(music_file)
+    except pg.error:
+        return
+    pg.mixer.music.play()
+    return
+
 def esperaTeclaPressionada(pg):
     while True:
     	for event in pg.event.get():
@@ -47,7 +68,7 @@ def processa_texto(linha):
 def escreve_linha(linha, pg, myfont, screen, cor, posi_texto):
 	char = ""
 	label = ""
-	velocidade_do_texto = 0.01
+	velocidade_do_texto = 0.03
 	for j in linha:
 		sleep(velocidade_do_texto)
 		char = char + j

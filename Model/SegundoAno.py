@@ -19,6 +19,7 @@ class SegundoAno(object):
 	def inicializaCenas(self):
 		self.intro = ""
 		self.cena1 = Cena("",None)
+		self.cena1.setMusica("Musicas/The Cure - Friday I'm In Love [8-BIT].mp3")
 		self.cena1a = Cena("", self.cena1)
 		self.cena1b = Cena("", self.cena1)
 		self.cena1aa = Cena("", self.cena1a)
