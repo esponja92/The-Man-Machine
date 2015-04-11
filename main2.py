@@ -34,7 +34,7 @@ pg.init()
 
 screen = pg.display.set_mode(dimen, FULLSCREEN)
 pg.display.set_caption("The Man Machine")
-myfont = pg.font.SysFont("Computer Pixel-7", tfonte)
+myfont = pg.font.SysFont("./ARCADECLASSIC.TTF", tfonte)
 
 def cenaDecisao(cena_atual, pontos):
 	io.escreve(cena_atual.getTexto(),pg, myfont, screen, yellow, nfrases)
