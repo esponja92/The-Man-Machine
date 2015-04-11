@@ -6,7 +6,7 @@ from pygame.locals import *
 posi_texto = (10, 165)
 
 def stop_music(pg):
-	pg.mixer.music.stop()
+	pg.mixer.music.fadeout(1000)
 
 def play_music(pg, music_file):
     # pick a midi or MP3 music file you have in the working folder

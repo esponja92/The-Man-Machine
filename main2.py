@@ -93,6 +93,7 @@ def loopPrincipal():
 		else:
 			cena_atual = Cena.Cena("", None)
 
+		io.stop_music(pg)
 		#Condicao para encerrar a fase
 		while(((cena_atual.getCenaFilhaA() != None)or(cena_atual.getCenaFilhaB() != None))and(pontos > 0)):
 			cena_atual,pontos = cenaDecisao(cena_atual, pontos, MUSIC_ON)
