@@ -65,10 +65,10 @@ def processa_texto(linha):
 
 	return texto
 
-def escreve_linha(linha, pg, myfont, screen, cor, posi_texto):
+def escreve_linha(linha, pg, myfont, screen, cor, posi_texto, velocidade_do_texto):
 	char = ""
 	label = ""
-	velocidade_do_texto = 0.03
+	BREAK = False
 	for j in linha:
 		sleep(velocidade_do_texto)
 		char = char + j
@@ -84,7 +84,7 @@ def apagaTela(pg, screen):
 	return
 
 def delay(pg, myfont, screen, cor):
-	label = escreve_linha("Pressione qualquer tecla para continuar...", pg, myfont, screen, cor, (10, 440))
+	label = escreve_linha("Pressione qualquer tecla para continuar...", pg, myfont, screen, cor, (10, 440), 0.0)
 	esperaTeclaPressionada(pg)
 	apagaTela(pg, screen)
 
@@ -98,13 +98,20 @@ def escreve(linha, pg, myfont, screen, cor, nlinhas):
 	texto = processa_texto(linha)
 	
 	conta_linhas = 0
+	velocidade_do_texto = 0.03
+
 	for i in texto:
+		#testa para saber se o usuario apertou alguma tecla
+		for event in pg.event.get():
+			if event.type == KEYUP:
+				velocidade_do_texto = 0.0
+
 		#se for a hora de listar as opcoes, e elas nao estiverem em primeiro naturalmente, quero obrigar a rotina a gerar uma nova tela
 		if ((len(i))and("	a)" in i)and(conta_linhas > 0)):
 			delay(pg, myfont, screen, cor)
 			conta_linhas = 0
 			p = posi_texto
-		escreve_linha(i, pg, myfont, screen, cor, p)
+		escreve_linha(i, pg, myfont, screen, cor, p, velocidade_do_texto)
 		p = (p[0], p[1] + 25)
 		conta_linhas = conta_linhas + 1
 		if ((conta_linhas == nlinhas)and(i != texto[-1])):
