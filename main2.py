@@ -27,7 +27,7 @@ tfonte = 35
 
 pg.init()
 
-screen = pg.display.set_mode(dimen, RESIZABLE)
+screen = pg.display.set_mode(dimen, FULLSCREEN)
 pg.display.set_caption("The Man Machine")
 myfont = pg.font.SysFont("Computer Pixel-7", tfonte)
 
