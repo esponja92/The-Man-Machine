@@ -139,10 +139,6 @@ opcao = ""
 while(not(opcao in range(256))):
 	io.play_music(pg, "Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3")
 	opcao = TelaDeAbertura.abertura(pg, myfont, screen)
-	if(final.getMusicaF3() == "Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3"):
-		print "sim"
-	else:
-		print "nao"
 opcao = chr(opcao)
 while(opcao != "b"):
 	if (opcao == "a"):
