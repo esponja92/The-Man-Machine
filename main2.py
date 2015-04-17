@@ -62,11 +62,11 @@ def iniciaCena(fase):
 def decideFinal(cena_atual):
 	nome_final = finais[cena_atual.getNome()]
 	if(nome_final == "final1"):
-		io.escreve(final.getFinal1(),pg, myfont, screen, yellow, nfrases)
 		io.play_music(pg, final.getMusicaF1())
+		io.escreve(final.getFinal1(),pg, myfont, screen, yellow, nfrases)
 	else:
-		io.escreve(final.getFinal2(),pg, myfont, screen, yellow, nfrases)
 		io.play_music(pg, final.getMusicaF2())
+		io.escreve(final.getFinal2(),pg, myfont, screen, yellow, nfrases)
 
 def loopPrincipal():
 
@@ -101,8 +101,8 @@ def loopPrincipal():
 		#testa se o personagem morreu
 		if(pontos == 0):
 			io.stop_music(pg)
-			io.escreve(final.getFinal3(),pg, myfont, screen, yellow, nfrases)
 			io.play_music(pg, final.getMusicaF3())
+			io.escreve(final.getFinal3(),pg, myfont, screen, yellow, nfrases)			
 			io.delay(pg, myfont, screen, yellow)
 
 			#Todos os booleanos devem indicar o fim do jogo
@@ -132,17 +132,24 @@ def loopPrincipal():
 				#Se a fase 3 acabou, o jogo tambem
 				FIM_DO_JOGO = True
 				decideFinal(cena_atual)
+				io.delay(pg, myfont, screen, yellow)
 
 #Chama tela de abertura do View, que deve retornar com a opcao do jogador
 opcao = ""
 while(not(opcao in range(256))):
 	io.play_music(pg, "Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3")
 	opcao = TelaDeAbertura.abertura(pg, myfont, screen)
+	if(final.getMusicaF3() == "Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3"):
+		print "sim"
+	else:
+		print "nao"
 opcao = chr(opcao)
 while(opcao != "b"):
 	if (opcao == "a"):
 		loopPrincipal()
 	#Chama tela de abertura do View de novo
 	while(not(opcao in range(256))):
+		io.stop_music(pg)
+		io.play_music(pg, "Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3")
 		opcao = TelaDeAbertura.abertura(pg, myfont, screen)
 	opcao = chr(opcao)

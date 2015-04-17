@@ -11,6 +11,7 @@ class Final(object):
 	def __init__(self):
 
 		self.inicializaTextos()
+		self.inicializaMusicas()
 
 	def inicializaTextos(self):
 
@@ -20,9 +21,9 @@ class Final(object):
 
 	def inicializaMusicas(self):
 
-		self.musicaF1 = "/Musicas/Pink Floyd- Dark Side of the Moon 8-bit- Time.mp3"
-		self.musicaF2 = "/Musicas/Daft Punk Digital Love 8bit.mp3"
-		self.musicaF1 = "/Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3"
+		self.musicaF1 = "Musicas/Pink Floyd- Dark Side of the Moon 8-bit- Time.mp3"
+		self.musicaF2 = "Musicas/Daft Punk Digital Love 8bit.mp3"
+		self.musicaF3 = "Musicas/Kraftwerk - The Man Machine - 8 Bit.mp3"
 
 
 	def getFinal1(self):
