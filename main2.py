@@ -79,7 +79,7 @@ def loopPrincipal():
 	MUSIC_ON = False
 
 	#pontos conscienciais iniciais
-	pontos = 12
+	pontos = 14
 
 	#loop principal
 	while(not(FIM_DO_JOGO)):
